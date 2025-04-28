@@ -1,10 +1,9 @@
 {
   "name": "sancho-gigachat",
   "productName": "sancho-gigachat",
-  "version": "1.0.0",
-  "description": "My Electron application description",
+  "version": "0.1.0",
+  "description": "GUI for chat with Giga Chat by Sber",
   "main": ".vite/build/main.js",
-  "type": "module",
   "scripts": {
     "start": "electron-forge start",
     "web:dev": "vite --config vite.renderer.config.mjs -d",
@@ -15,10 +14,10 @@
   },
   "keywords": [],
   "author": {
-    "name": "SanchoPansa",
+    "name": "Sancho Pansa",
     "email": "zelgadis4@gmail.com"
   },
-  "license": "MIT",
+  "license": "ISC",
   "devDependencies": {
     "@electron-forge/cli": "^7.8.0",
     "@electron-forge/maker-deb": "^7.8.0",
@@ -30,6 +29,7 @@
     "@electron-forge/plugin-vite": "^7.8.0",
     "@electron/fuses": "^1.8.0",
     "@vitejs/plugin-vue": "^5.2.3",
+    "dotenv": "^16.5.0",
     "electron": "35.2.1",
     "eslint": "^9.25.1",
     "eslint-plugin-vue": "^10.0.0",
@@ -39,6 +39,7 @@
   "dependencies": {
     "axios": "^1.9.0",
     "electron-squirrel-startup": "^1.0.1",
+    "gigachat": "^0.0.14",
     "node-cache": "^5.1.2",
     "vue": "^3.5.13"
   }
