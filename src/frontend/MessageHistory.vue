@@ -1,11 +1,10 @@
 <script setup>
-import { ref } from "vue";
 import Message from "./Message.vue";
 
-const messages = ref([]);
+const messages = defineModel();
 
 </script>
 
 <template>
-  <Message v-for="m in messages" :text="m.text"></Message>
+  <Message v-for="m in messages">{{ m }}</Message>
 </template>

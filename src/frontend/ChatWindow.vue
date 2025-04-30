@@ -1,13 +1,16 @@
 <script setup>
-import { ref } from "vue";
+import { reactive } from "vue";
 import UserInput from "./UserInput.vue";
+import MessageHistory from "./MessageHistory.vue";
 
-const request = ref("");
+const messageStack = reactive([]);
 
 function sendRequest(text) {
   if(text === null) {
     alertUser("Введите запрос");
   }
+
+  messageStack.push(text);
 
   window.gigaChatApi.sendQuestion(text)
     .then(addMessageBubble)
@@ -19,14 +22,15 @@ function alertUser(message) {
 }
 
 function addMessageBubble(messageText) {
-  // TODO:
   console.log(messageText);
+  messageStack.push(messageText);
 }
 
 </script>
 
 <template>
-<!-- Массив истории сообщений -->
-<!-- Форма для ввода  -->
- <UserInput @submit="sendRequest"></UserInput>
+  <!-- Массив истории сообщений -->
+  <MessageHistory v-model="messageStack"></MessageHistory>
+  <!-- Форма для ввода  -->
+  <UserInput @submit="sendRequest"></UserInput>
 </template>

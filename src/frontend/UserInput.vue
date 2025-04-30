@@ -1,6 +1,6 @@
 <script setup>
 import { Form } from "@primevue/forms";
-import {Button, Textarea} from "primevue";
+import { Button, Textarea } from "primevue";
 import { ref } from 'vue';
 
 const emit = defineEmits([
