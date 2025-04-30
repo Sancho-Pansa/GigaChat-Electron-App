@@ -1,19 +1,17 @@
 <script setup>
-import { Textarea, Button } from "primevue";
-import { Form } from "@primevue/forms";
 import { ref } from "vue";
+import UserInput from "./UserInput.vue";
 
 const request = ref("");
 
-function sendRequest() {
-  const message = request.value;
-  if(message === null) {
+function sendRequest(text) {
+  if(text === null) {
     alertUser("Введите запрос");
   }
 
-  window.gigaChatApi.sendQuestion(message)
-    .then((result) => request.value = result)
-    .catch(() => request.value = "ERROR");
+  window.gigaChatApi.sendQuestion(text)
+    .then(addMessageBubble)
+    .catch(() => addMessageBubble("ERROR"));
 }
 
 function alertUser(message) {
@@ -22,6 +20,7 @@ function alertUser(message) {
 
 function addMessageBubble(messageText) {
   // TODO:
+  console.log(messageText);
 }
 
 </script>
@@ -29,22 +28,5 @@ function addMessageBubble(messageText) {
 <template>
 <!-- Массив истории сообщений -->
 <!-- Форма для ввода  -->
-<Form class="flex flex-col gap-4 absolute inset-x-0 bottom-0 mx-4">
-  <Textarea
-    v-model="request"
-    placeholder="Введите запрос"
-    autoResize
-    rows="2"
-    cols="45"
-    size="large"
-    @keyup.enter="sendRequest">
-  </Textarea>
-  <Button
-    type="submit"
-    severity="secondary"
-    label="Отправить"
-    @click="sendRequest"
-    >
-  </Button>
-</Form>
+ <UserInput @submit="sendRequest"></UserInput>
 </template>

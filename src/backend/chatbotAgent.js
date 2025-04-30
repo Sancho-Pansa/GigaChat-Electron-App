@@ -16,7 +16,6 @@ const client = new GigaChat({
 });
 
 export default async function sendResponse(message) {
-  console.log(message);
   const response = await client.chat({
     messages: [
       {
