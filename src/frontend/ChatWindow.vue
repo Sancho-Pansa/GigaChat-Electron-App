@@ -29,8 +29,10 @@ function addMessageBubble(messageText) {
 </script>
 
 <template>
-  <!-- Массив истории сообщений -->
-  <MessageHistory v-model="messageStack"></MessageHistory>
-  <!-- Форма для ввода  -->
-  <UserInput @submit="sendRequest"></UserInput>
+  <main class="grow-1 flex flex-col">
+    <!-- Массив истории сообщений -->
+    <MessageHistory v-model="messageStack"></MessageHistory>
+    <!-- Форма ввода  -->
+    <UserInput @submit="sendRequest"></UserInput>
+  </main>
 </template>

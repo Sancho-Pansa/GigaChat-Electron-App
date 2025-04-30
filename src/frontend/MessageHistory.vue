@@ -6,5 +6,7 @@ const messages = defineModel();
 </script>
 
 <template>
-  <Message v-for="m in messages">{{ m }}</Message>
+  <div class="grow-1">
+    <Message v-for="m in messages">{{ m }}</Message>
+  </div>
 </template>

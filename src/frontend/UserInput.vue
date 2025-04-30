@@ -16,7 +16,7 @@ function sendRequest() {
 </script>
 <template>
   <!-- Форма для ввода  -->
-  <Form class="flex flex-col gap-4 absolute inset-x-0 bottom-0 mx-4 mb-2">
+  <Form class="flex flex-col gap-4 mx-4 mb-2">
     <Textarea
       v-model="request"
       placeholder="Введите запрос"
