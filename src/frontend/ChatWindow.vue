@@ -5,15 +5,18 @@ import MessageHistory from "./MessageHistory.vue";
 
 const messageStack = reactive([]);
 
+const USER_TAG = "human";
+const BOT_TAG = "bot";
+
 function sendRequest(text) {
   if(text === null) {
     alertUser("Введите запрос");
   }
 
-  messageStack.push(text);
+  addMessageBubble(text, USER_TAG);
 
   window.gigaChatApi.sendQuestion(text)
-    .then(addMessageBubble)
+    .then((answer) => addMessageBubble(answer, BOT_TAG))
     .catch(() => addMessageBubble("ERROR"));
 }
 
@@ -21,9 +24,8 @@ function alertUser(message) {
   alert(message);
 }
 
-function addMessageBubble(messageText) {
-  console.log(messageText);
-  messageStack.push(messageText);
+function addMessageBubble(messageText, speaker) {
+  messageStack.push({ text: messageText, speaker: speaker });
 }
 
 </script>

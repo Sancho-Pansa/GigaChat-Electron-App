@@ -1,12 +1,17 @@
 <script setup>
-import Message from "./Message.vue";
+import MessageBubble from './MessageBubble.vue';
 
-const messages = defineModel();
+const messages = defineModel({ type: Object });
 
 </script>
 
 <template>
   <div class="grow-1">
-    <Message v-for="m in messages">{{ m }}</Message>
+    <MessageBubble
+      v-for="(m, key) in messages"
+      v-bind:key="key"
+      :text=m.text
+      :speaker=m.speaker>
+    </MessageBubble>
   </div>
 </template>
