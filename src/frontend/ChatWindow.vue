@@ -2,22 +2,21 @@
 import { reactive } from "vue";
 import UserInput from "./UserInput.vue";
 import MessageHistory from "./MessageHistory.vue";
+import messageTags from "../backend/messageTags";
 
 const messageStack = reactive([]);
-
-const USER_TAG = "human";
-const BOT_TAG = "bot";
+const tags = messageTags;
 
 function sendRequest(text) {
   if(text === null) {
     alertUser("Введите запрос");
   }
 
-  addMessageBubble(text, USER_TAG);
+  addMessageBubble(text, tags.user);
 
   window.gigaChatApi.sendQuestion(text)
-    .then((answer) => addMessageBubble(answer, BOT_TAG))
-    .catch(() => addMessageBubble("ERROR"));
+    .then((answer) => addMessageBubble(answer, tags.bot))
+    .catch(() => addMessageBubble("ERROR", tags.error));
 }
 
 function alertUser(message) {

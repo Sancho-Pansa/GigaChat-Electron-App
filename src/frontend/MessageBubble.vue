@@ -1,26 +1,40 @@
 <script setup>
+import { computed, ref } from "vue";
+
 const {text, speaker} = defineProps(["text", "speaker"]);
+const MARGIN_VALUE = ref("5%");
+
+const bubbleClass = computed(() => {
+  String.toString().toLowerCase
+  return `speaker-${speaker.toLowerCase()}`
+});
 
 </script>
 
 <template>
   <div
-    class="flex w-5/6 m-auto my-4 px-1 py-0.5 rounded-sm bg-neutral-200"
-    :class="speaker === 'bot' ? 'speaker-bot' : 'speaker-human'">
+    class="w-fit max-w-5/6 m-auto my-4 px-3 py-1 rounded-lg leading-7"
+    :class="bubbleClass">
     <span>{{ text }}</span>
   </div>
 </template>
 
 <style scoped>
-:root {
-  --my-margin-value: 5%;
+@reference "tailwindcss";
+.speaker-user {
+  margin-right: v-bind("MARGIN_VALUE");
+  text-align: right;
 }
 
-.speaker-human {
-  margin-left: var(--my-margin-value);
+.speaker-bot, .speaker-error {
+  margin-left: v-bind("MARGIN_VALUE");
 }
 
-.speaker-bot {
-  margin-right: var(--my-margin-value);
+.speaker-user {
+  @apply bg-neutral-50;
+}
+
+.speaker-error {
+  @apply bg-red-400;
 }
 </style>
