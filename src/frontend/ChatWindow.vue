@@ -24,6 +24,7 @@ function alertUser(message) {
 }
 
 function addMessageBubble(messageText, speaker) {
+  console.log(messageText);
   messageStack.push({ text: messageText, speaker: speaker });
 }
 
