@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@layer components {
+  .markdown {
+    /* Общие стили для Markdown-контента */
+    @apply text-gray-800 dark:text-gray-200;
+
+    /* Заголовки */
+    h1 {
+      @apply text-3xl font-bold my-4 border-b pb-2 dark:border-gray-700;
+    }
+    h2 {
+      @apply text-2xl font-bold my-3 dark:border-gray-700;
+    }
+    h3 {
+      @apply text-xl font-semibold my-2;
+    }
+
+    /* Параграфы и текст */
+    p {
+      @apply my-4 leading-relaxed;
+    }
+
+    /* Ссылки */
+    a {
+      @apply text-blue-600 hover:underline dark:text-blue-400;
+    }
+
+    /* Списки */
+    ul, ol {
+      @apply my-4 pl-6;
+    }
+    ul {
+      @apply list-disc;
+    }
+    ol {
+      @apply list-decimal;
+    }
+    li {
+      @apply my-2;
+    }
+
+    /* Код и блоки кода */
+    code {
+      @apply bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-sm font-mono;
+    }
+    pre {
+      @apply bg-gray-100 dark:bg-gray-800 p-4 rounded my-4 overflow-x-auto;
+    }
+    pre code {
+      @apply bg-transparent p-0;
+    }
+
+    /* Цитаты */
+    blockquote {
+      @apply border-l-4 border-gray-300 pl-4 italic text-gray-600 dark:border-gray-600 dark:text-gray-400;
+    }
+
+    /* Изображения */
+    img {
+      @apply max-w-full my-4 rounded;
+    }
+
+    /* Горизонтальная линия */
+    hr {
+      @apply my-6 border-t border-gray-300 dark:border-gray-700;
+    }
+
+    /* Таблицы */
+    table {
+      @apply w-full my-4 border-collapse;
+    }
+    th, td {
+      @apply border px-4 py-2 dark:border-gray-700;
+    }
+    th {
+      @apply bg-gray-100 dark:bg-gray-800 font-semibold;
+    }
+  }
+}
