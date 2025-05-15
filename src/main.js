@@ -1,7 +1,7 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'node:path';
 import started from 'electron-squirrel-startup';
-import sendResponse from './backend/chatbotAgent';
+import * as chatbotAgent from './backend/chatbotAgent';
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if(started) {
@@ -36,9 +36,8 @@ const createWindow = () => {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
-  ipcMain.handle("sendQuestion", async (_, question) => {
-    return await sendResponse(question);
-  });
+  ipcMain.handle("sendQuestion", async (_, question) => await chatbotAgent.sendResponse(question));
+  ipcMain.handle("getTokenBalance", async () => await chatbotAgent.getBalance());
 
   createWindow();
 

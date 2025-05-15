@@ -8,15 +8,15 @@ const httpsAgent = new Agent({
   rejectUnauthorized: false
 });
 
-const client = new GigaChat({
+const giga = new GigaChat({
   timeout: 600,
   model: "GigaChat",
   credentials: process.env.AUTH_KEY,
   httpsAgent: httpsAgent
 });
 
-export default async function sendResponse(message) {
-  const response = await client.chat({
+export async function sendResponse(message) {
+  const response = await giga.chat({
     messages: [
       {
         role: "user",
@@ -25,4 +25,11 @@ export default async function sendResponse(message) {
     ]
   });
   return response.choices[0]?.message.content;
+}
+
+export async function getBalance(usage = "GigaChat") {
+  const response = await giga.balance();
+  console.log(response);
+  const chatType = response?.balance.find((v) => v.usage === usage);
+  return chatType?.value;
 }

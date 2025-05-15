@@ -37,6 +37,7 @@ function sendRequest(text) {
     })
     .finally(() => {
       emitter.emit("scrollChatDown");
+      emitter.emit("countTokens");
     });
 }
 
