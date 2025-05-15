@@ -24,6 +24,7 @@ function sendRequest(text) {
 
   addMessageBubble(text, tags.user);
   addMessageBubble("", tags.bot);
+  emitter.emit("scrollChatDown");
 
   window.gigaChatApi.sendQuestion(text)
     .then((answer) => {
@@ -35,12 +36,7 @@ function sendRequest(text) {
       addMessageBubble("ERROR", tags.error);
     })
     .finally(() => {
-      nextTick(() => {
-        window.scrollTo({
-          top: document.body.scrollHeight,
-          behavior: "smooth"
-        });
-      })
+      emitter.emit("scrollChatDown");
     });
 }
 
