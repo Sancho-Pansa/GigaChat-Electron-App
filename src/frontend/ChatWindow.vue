@@ -1,8 +1,17 @@
 <script setup>
-import { reactive } from "vue";
+import { onMounted, onUnmounted, reactive } from "vue";
 import UserInput from "./UserInput.vue";
 import MessageHistory from "./MessageHistory.vue";
 import messageTags from "../backend/messageTags";
+import emitter from "./event.bus";
+
+onMounted(() => {
+  emitter.on("requestSubmit", sendRequest);
+})
+
+onUnmounted(() => {
+  emitter.off("requestSubmit");
+})
 
 const messageStack = reactive([]);
 const tags = messageTags;
@@ -35,6 +44,10 @@ function addMessageBubble(messageText, speaker) {
     <!-- Массив истории сообщений -->
     <MessageHistory v-model="messageStack"></MessageHistory>
     <!-- Форма ввода  -->
-    <UserInput @submit="sendRequest"></UserInput>
+    <UserInput />
   </main>
 </template>
+
+<style scoped>
+
+</style>

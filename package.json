@@ -37,6 +37,7 @@
     "eslint-plugin-vue": "^10.0.0",
     "globals": "^16.0.0",
     "lodash": "^4.17.21",
+    "mitt": "^3.0.1",
     "postcss": "^8.5.3",
     "remark-gfm": "^4.0.1",
     "tailwindcss": "^4.1.4",

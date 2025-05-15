@@ -1,19 +1,17 @@
 <script setup>
 import { Form } from "@primevue/forms";
 import { Button, Textarea } from "primevue";
-import { ref } from 'vue';
+import { ref } from "vue";
+import emitter from "./event.bus";
 
-const emit = defineEmits([
-  "submit"
-]);
-
-const request = ref("")
+const request = ref("");
 
 function sendRequest() {
-  emit("submit", request.value);
+  emitter.emit("requestSubmit", request.value);
   request.value = "";
 }
 </script>
+
 <template>
   <!-- Форма для ввода  -->
   <Form class="flex flex-col gap-4 mx-4 mb-2">
