@@ -37,7 +37,13 @@ const app = createApp(App);
 app
   .use(PrimeVue, {
     theme: {
-      preset: Aura
+      preset: Aura,
+      options: {
+        cssLayer: {
+          name: "primevue",
+          order: "theme, base, primevue"
+        }
+      }
     }
   })
   .mount("#app");

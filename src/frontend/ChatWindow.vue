@@ -40,7 +40,7 @@ function addMessageBubble(messageText, speaker) {
 </script>
 
 <template>
-  <main class="grow-1 flex flex-col">
+  <main class="grow-1 flex flex-col overflow-y-hidden">
     <!-- Массив истории сообщений -->
     <MessageHistory v-model="messageStack"></MessageHistory>
     <!-- Форма ввода  -->

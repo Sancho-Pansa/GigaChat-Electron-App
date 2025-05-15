@@ -14,8 +14,9 @@ function sendRequest() {
 
 <template>
   <!-- Форма для ввода  -->
-  <Form class="flex flex-col gap-4 mx-4 mb-2">
+  <Form class="grow-0 shrink-0 basis-auto px-(--chat-window-padding) flex flex-col gap-4">
     <Textarea
+      class="shadow-md"
       v-model="request"
       placeholder="Введите запрос"
       autoResize

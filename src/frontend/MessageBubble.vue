@@ -4,18 +4,16 @@ import remarkGfm from "remark-gfm";
 import { computed, ref } from "vue";
 
 const {text, speaker} = defineProps(["text", "speaker"]);
-const MARGIN_VALUE = ref("5%");
 
 const bubbleClass = computed(() => {
   String.toString().toLowerCase
   return `speaker-${speaker.toLowerCase()}`
 });
-
 </script>
 
 <template>
   <div
-    class="w-fit max-w-5/6 m-auto my-4 px-3 py-1 rounded-lg leading-7 list-disc list-inside"
+    class="w-fit max-w-5/6 px-3 py-1 rounded-lg leading-7"
     :class="bubbleClass">
     <vue-markdown :markdown="text" :remark-plugins="[remarkGfm]"/>
   </div>
@@ -24,20 +22,20 @@ const bubbleClass = computed(() => {
 <style scoped>
 @reference "tailwindcss";
 
-.speaker-user {
-  margin-right: v-bind("MARGIN_VALUE");
-  text-align: right;
-}
+  :deep(ol), :deep(ul) {
+    list-style: auto;
+  }
 
-.speaker-bot, .speaker-error {
-  margin-left: v-bind("MARGIN_VALUE");
-}
+  :deep(ul) {
+    list-style-position: inside;
+  }
 
-.speaker-user {
-  @apply bg-neutral-50;
-}
+  .speaker-user {
+    @apply bg-neutral-50 self-end-safe;
+  }
 
-.speaker-error {
-  @apply bg-red-400;
-}
+  .speaker-error {
+    @apply bg-red-400;
+  }
+
 </style>
