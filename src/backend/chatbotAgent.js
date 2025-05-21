@@ -1,8 +1,12 @@
 import GigaChat from "gigachat";
+import { Message } from "gigachat/interfaces";
 import * as dotenv from 'dotenv';
 import { Agent } from 'node:https';
 
 dotenv.config();
+
+/** @type {Message[]} */
+const messageStack = [];
 
 const httpsAgent = new Agent({
   rejectUnauthorized: false
@@ -16,15 +20,20 @@ const giga = new GigaChat({
 });
 
 export async function sendResponse(message) {
-  const response = await giga.chat({
-    messages: [
-      {
-        role: "user",
-        content: message
-      }
-    ]
+  messageStack.push({
+    role: "user",
+    content: message
   });
-  return response.choices[0]?.message.content;
+
+  const response = await giga.chat({
+    messages: messageStack
+  });
+  const responseContent = response.choices[0]?.message;
+  messageStack.push(
+    responseContent
+  );
+
+  return responseContent.content;
 }
 
 export async function getBalance(usage = "GigaChat") {
