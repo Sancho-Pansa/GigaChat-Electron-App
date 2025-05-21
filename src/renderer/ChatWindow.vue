@@ -2,9 +2,8 @@
 import { onMounted, onUnmounted, reactive } from "vue";
 import UserInput from "./UserInput.vue";
 import MessageHistory from "./MessageHistory.vue";
-import messageTags from "../backend/messageTags";
+import messageTags from "../main/services/messageTags";
 import emitter from "./event.bus";
-import { nextTick } from "vue";
 
 onMounted(() => {
   emitter.on("requestSubmit", sendRequest);

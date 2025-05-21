@@ -1,7 +1,7 @@
 <script setup>
-import ChatWindow from "./frontend/ChatWindow.vue";
-import FooterInfo from "./frontend/FooterInfo.vue";
-import HeaderInfo from "./frontend/HeaderInfo.vue";
+import ChatWindow from "./ChatWindow.vue";
+import FooterInfo from "./FooterInfo.vue";
+import HeaderInfo from "./HeaderInfo.vue";
 </script>
 
 <template>

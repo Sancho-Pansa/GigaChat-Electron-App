@@ -1,6 +1,6 @@
 @import "tailwindcss";
-@import "./frontend/css/properties.css";
-@import "./frontend/css/custom-markdown.css";
+@import "./css/properties.css";
+@import "./css/custom-markdown.css";
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
