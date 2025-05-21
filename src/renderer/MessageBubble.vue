@@ -4,7 +4,7 @@ import { VueMarkdown } from "@crazydos/vue-markdown";
 import remarkGfm from "remark-gfm";
 import { computed } from "vue";
 
-const { text, speaker } = defineProps(["text", "speaker"]);
+const { text = "", speaker = "" } = defineProps(["text", "speaker"]);
 
 const bubbleClass = computed(() => {
   String.toString().toLowerCase;
