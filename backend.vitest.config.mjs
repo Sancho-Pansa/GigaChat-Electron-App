@@ -1,5 +1,5 @@
 import { defineProject, mergeConfig } from "vitest/config";
-import viteMainConfig from "./vite.main.config.mjs";
+import viteMainConfig from "./main.vite.config.mjs";
 
 const frontend = defineProject({
     test: {

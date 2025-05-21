@@ -6,9 +6,9 @@
   "main": ".vite/build/main.js",
   "scripts": {
     "start": "electron-forge start",
-    "web:dev": "vite --config vite.renderer.config.mjs -d",
-    "test:front": "vitest --config vitest.config.front.mjs",
-    "test:back": "vitest --config vitest.config.back.mjs",
+    "web:dev": "vite --config renderer.vite.renderer.config.mjs -d",
+    "test:front": "vitest --config frontend.vitest.config.mjs",
+    "test:back": "vitest --config backend.vitest.config.mjs",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
