@@ -40,5 +40,5 @@ export async function getBalance(usage = "GigaChat") {
   const response = await giga.balance();
   console.log(response);
   const chatType = response?.balance.find((v) => v.usage === usage);
-  return chatType?.value;
+  return chatType?.value ?? -1;
 }
